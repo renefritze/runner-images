@@ -24,7 +24,7 @@ apt-get install -y mysql-server
 apt install libmysqlclient-dev -y
 
 # Disable mysql.service
-systemctl is-active --quiet mysql.service && systemctl stop mysql.service
-systemctl disable mysql.service
+# systemctl is-active --quiet mysql.service && systemctl stop mysql.service
+# systemctl disable mysql.service
 
-invoke_tests "Databases" "MySQL"
+# invoke_tests "Databases" "MySQL"

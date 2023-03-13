@@ -39,22 +39,22 @@ Write-Host "Show Packer Version"
 packer --version
 
 Write-Host "Build $Image VM"
-packer build    -var "capture_name_prefix=$ResourcesNamePrefix" `
-                -var "client_id=$ClientId" `
-                -var "client_secret=$ClientSecret" `
-                -var "install_password=$InstallPassword" `
-                -var "location=$Location" `
-                -var "resource_group=$ResourceGroup" `
-                -var "storage_account=$StorageAccount" `
-                -var "subscription_id=$SubscriptionId" `
-                -var "temp_resource_group_name=$TempResourceGroupName" `
-                -var "tenant_id=$TenantId" `
-                -var "virtual_network_name=$VirtualNetworkName" `
-                -var "virtual_network_resource_group_name=$VirtualNetworkRG" `
-                -var "virtual_network_subnet_name=$VirtualNetworkSubnet" `
-                -var "run_validation_diskspace=$env:RUN_VALIDATION_FLAG" `
-                -color=false `
-                $TemplatePath `
+packer build    --var "capture_name_prefix=ResourcesNamePrefix" \
+                --var "client_id=ClientId" \
+                --var "client_secret=ClientSecret" \
+                --var "install_password=InstallPassword" \
+                --var "location=local" \
+                --var "resource_group=ResourceGroup" \
+                --var "storage_account=StorageAccount" \
+                --var "subscription_id=SubscriptionId" \
+                --var "temp_resource_group_name=TempResourceGroupName" \
+                --var "tenant_id=TenantId" \
+                --var "virtual_network_name=VirtualNetworkName" \
+                --var "virtual_network_resource_group_name=VirtualNetworkRG" \
+                --var "virtual_network_subnet_name=VirtualNetworkSubnet" \
+                --var "run_validation_diskspace=true" \
+                -color=false \
+                $TemplatePath \
         | Where-Object {
             #Filter sensitive data from Packer logs
             $currentString = $_
